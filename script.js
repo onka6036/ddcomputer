@@ -1,6 +1,7 @@
 const menuToggle = document.querySelector('.menu-toggle');
 const siteNav = document.querySelector('.site-nav');
 const businessEmail = 'business@mlocomputersolutions.com';
+const businessAddress = '580 S Denton Tap Rd, Coppell, TX 75019';
 
 document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
   link.href = `mailto:${businessEmail}`;
@@ -10,6 +11,14 @@ document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
 document.querySelectorAll('body *').forEach((element) => {
   if (element.children.length === 0 && element.textContent.includes('mlocomputersolutionsllc@gmail.com')) {
     element.textContent = element.textContent.replaceAll('mlocomputersolutionsllc@gmail.com', businessEmail);
+  }
+});
+
+document.querySelectorAll('.contact-details > div').forEach((detail) => {
+  const label = detail.querySelector('.detail-label');
+  if (label?.textContent.trim() === 'Owner') {
+    label.textContent = 'Address';
+    label.nextElementSibling.textContent = businessAddress;
   }
 });
 
