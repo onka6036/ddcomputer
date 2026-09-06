@@ -1,5 +1,17 @@
 const menuToggle = document.querySelector('.menu-toggle');
 const siteNav = document.querySelector('.site-nav');
+const businessEmail = 'business@mlocomputersolutions.com';
+
+document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
+  link.href = `mailto:${businessEmail}`;
+  if (link.textContent.includes('@')) link.textContent = businessEmail;
+});
+
+document.querySelectorAll('body *').forEach((element) => {
+  if (element.children.length === 0 && element.textContent.includes('mlocomputersolutionsllc@gmail.com')) {
+    element.textContent = element.textContent.replaceAll('mlocomputersolutionsllc@gmail.com', businessEmail);
+  }
+});
 
 menuToggle?.addEventListener('click', () => {
   const isOpen = siteNav.classList.toggle('is-open');
